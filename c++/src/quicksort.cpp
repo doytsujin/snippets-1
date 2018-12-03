@@ -2,31 +2,42 @@
 #include <vector>
 #include "quicksort.h"
 
-using namespace std;
+int partition(std::vector<int> &A, int i, int j) {
+    // p is the pivot
+    int p = A[i];
 
-int partition(vector<int> &A, int i, int j) {
-  int p = A[i]; // p is the pivot
-  int m = i; // S1 and S2 are initially empty
-  for (int k = i+1; k <= j; k++) { // explore the unknown region
-    if (A[k] < p) { // case 2
-      m++;
-      swap(A[k], A[m]); // C++ STL algorithm std::swap
-    } // notice that we do nothing in case 1: a[k] >= p
-  }
-  swap(A[i], A[m]); // final step, swap pivot with a[m]
-  return m; // return the index of pivot
+    // S1 and S2 are initially empty
+    int m = i;
+
+    // explore the unknown region
+    for (int k = i+1; k <= j; k++) {
+        // case 2
+        if (A[k] < p) {
+            m++;
+            std::swap(A[k], A[m]);
+        }
+        // notice that we do nothing in case 1: a[k] >= p
+    }
+    // final step, swap pivot with a[m]
+    std::swap(A[i], A[m]);
+
+    // return the index of pivot
+    return m;
 }
 
-void quickSort(vector<int> &A, int low, int high) {
-  if (low < high) {
-    int m = partition(A, low, high); // O(N)
-    // A[low..high] ~> A[low..m–1], pivot, A[m+1..high]
-    quickSort(A, low, m-1); // recursively sort left subarray
-    // A[m] = pivot is already sorted after partition
-    quickSort(A, m+1, high); // then sort right subarray
-  }
+void quickSort(std::vector<int> &A, int low, int high) {
+    if (low < high) {
+        // O(N)
+        int m = partition(A, low, high);
+
+        // A[low..high] ~> A[low..m–1], pivot, A[m+1..high]
+        quickSort(A, low, m-1); // recursively sort left subarray
+
+        // A[m] = pivot is already sorted after partition
+        quickSort(A, m+1, high); // then sort right subarray
+    }
 }
 
-void quickSort(vector<int> &A) {
+void quickSort(std::vector<int> &A) {
     quickSort(A, 0, A.size());
 }

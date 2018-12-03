@@ -5,12 +5,10 @@
 #include "merge.h"
 #include "quicksort.h"
 
-using namespace std;
-
-void merge(vector<int> &A, int low, int mid, int high) {
+void merge(std::vector<int> &A, int low, int mid, int high) {
   // subarray1 = A[low..mid], subarray2 = A[mid+1..high], both sorted
   int N = high-low+1;
-  vector<int> B(N, 0);
+  std::vector<int> B(N, 0);
 
   int left = low;
   int right = mid+1;
@@ -37,7 +35,7 @@ void merge(vector<int> &A, int low, int mid, int high) {
   }
 }
 
-void mergeSort(vector<int> &A, int low, int high) {
+void mergeSort(std::vector<int> &A, int low, int high) {
   // the array to be sorted is a[low..high]
   if (low < high) { // base case: low >= high (0 or 1 item)
     int mid = (low+high) / 2;	
@@ -47,6 +45,6 @@ void mergeSort(vector<int> &A, int low, int high) {
   }
 }
 
-void mergeSort(vector<int> &A) {
+void mergeSort(std::vector<int> &A) {
     mergeSort(A, 0, A.size());
 }
