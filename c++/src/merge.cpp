@@ -1,16 +1,11 @@
-// Thank you https://visualgo.net/bn/sorting?slide=10-2
+// Thank you https://visualgo.net/bn/sorting
 #include <vector>
 #include <iostream>
 
-using namespace std;
+#include "merge.h"
+#include "quicksort.h"
 
-void print(const vector<int> &A) {
-    cout << "[]: ";
-    for (int i=0; i<A.size(); i++) {
-        cout << A[i] << " ";
-    }
-    cout << endl;
-}
+using namespace std;
 
 void merge(vector<int> &A, int low, int mid, int high) {
   // subarray1 = A[low..mid], subarray2 = A[mid+1..high], both sorted
@@ -52,12 +47,6 @@ void mergeSort(vector<int> &A, int low, int high) {
   }
 }
 
-int main()
-{
-    vector<int> A = {1, 20, 5, 7, 19, 43, 6, -2, -5};
-    
-    print(A);
+void mergeSort(vector<int> &A) {
     mergeSort(A, 0, A.size());
-    print(A);
 }
-    
