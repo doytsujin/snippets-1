@@ -8,7 +8,7 @@ EXECUTABLE_NAME=test
 SRC_DIRS := src
 INC_DIRS := include
 BIN=bin
-OBJ=$(BIN)/obj
+OBJ=obj
 
 ##
 ## Don't change below here
@@ -34,6 +34,7 @@ clean:
 .PHONY: build clean
 
 $(EXECUTABLE_FILES): $(OBJECT_FILES)
+	mkdir -p $(@D)
 	$(CC) $(LDFLAGS) -o $@ $^
 	@# ^^^ http://www.gnu.org/software/make/manual/make.html#Automatic-Variables
 	@echo "Build successful!"
