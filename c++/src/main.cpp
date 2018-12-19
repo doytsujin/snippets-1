@@ -1,29 +1,30 @@
 #include <iostream>
 #include "merge.h"
 #include "quicksort.h"
+#include "macros.h"
 
 using namespace std;
 
-void print(const vector<int> &A) {
-    cout << "[]: ";
-    for (int i=0; i<A.size(); i++) {
-        cout << A[i] << " ";
-    }
-    cout << endl;
-}
-
 int main()
 {
+    vector<int> unsorted = {1, 20, 5, 7, 19, 43, 6, -2, -5};
+    vector<int> correct = {-5, -2, 1, 5, 6, 7, 19, 20, 43};
+    vector<int> sorted;
+
     cout << "---- Merge Sort ----" << endl;
-    vector<int> A = {1, 20, 5, 7, 19, 43, 6, -2, -5};
-    print(A);
-    mergeSort(A);
-    print(A);
+    PRINT_VECTOR(unsorted);
+    sorted = unsorted;
+    mergeSort(sorted);
+    PRINT_VECTOR(sorted);
+    PRINT_VECTOR(correct);
+    assert(sorted == correct);
 
     cout << "---- Quick Sort ----" << endl;
-    vector<int> B = {1, 20, 5, 7, 19, 43, 6, -2, -5};
-    print(B);
-    quickSort(B);
-    print(B);
+    PRINT_VECTOR(unsorted);
+    sorted = unsorted;
+    quickSort(sorted);
+    PRINT_VECTOR(sorted);
+    PRINT_VECTOR(correct);
+    assert(sorted == correct);
 }
     

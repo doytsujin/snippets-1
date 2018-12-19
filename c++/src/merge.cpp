@@ -1,11 +1,11 @@
 // Thank you https://visualgo.net/bn/sorting
 #include <vector>
-#include <iostream>
 
 #include "merge.h"
 #include "quicksort.h"
 
-void merge(std::vector<int> &A, int low, int mid, int high) {
+void merge(std::vector<int> &A, int low, int mid, int high) 
+{
   // subarray1 = A[low..mid], subarray2 = A[mid+1..high], both sorted
   int N = high-low+1;
   std::vector<int> B(N, 0);
@@ -35,16 +35,19 @@ void merge(std::vector<int> &A, int low, int mid, int high) {
   }
 }
 
-void mergeSort(std::vector<int> &A, int low, int high) {
+void mergeSort(std::vector<int> &A, int low, int high) 
+{
   // the array to be sorted is a[low..high]
   if (low < high) { // base case: low >= high (0 or 1 item)
     int mid = (low+high) / 2;	
-    mergeSort(A, low , mid ); // divide into two halves
+    mergeSort(A, low , mid); // divide into two halves
     mergeSort(A, mid+1, high); // then recursively sort them
     merge(A, low, mid, high); // conquer: the merge subroutine
   }
 }
 
-void mergeSort(std::vector<int> &A) {
-    mergeSort(A, 0, A.size());
+void mergeSort(std::vector<int> &A) 
+{
+    const int N = A.size()-1;
+    mergeSort(A, 0, N);
 }

@@ -1,8 +1,10 @@
 // Thank you https://visualgo.net/bn/sorting
 #include <vector>
+#include "macros.h"
 #include "quicksort.h"
 
-int partition(std::vector<int> &A, int i, int j) {
+int partition(std::vector<int> &A, int i, int j) 
+{
     // p is the pivot
     int p = A[i];
 
@@ -25,19 +27,22 @@ int partition(std::vector<int> &A, int i, int j) {
     return m;
 }
 
-void quickSort(std::vector<int> &A, int low, int high) {
-    if (low < high) {
+void quickSort(std::vector<int> &A, int left, int right) 
+{
+    if (left < right) {
         // O(N)
-        int m = partition(A, low, high);
+        int m = partition(A, left, right);
 
-        // A[low..high] ~> A[low..m–1], pivot, A[m+1..high]
-        quickSort(A, low, m-1); // recursively sort left subarray
+        // A[left..right] ~> A[left..m–1], pivot, A[m+1..right]
+        quickSort(A, left, m-1); // recursively sort left subarray
 
         // A[m] = pivot is already sorted after partition
-        quickSort(A, m+1, high); // then sort right subarray
+        quickSort(A, m+1, right); // then sort right subarray
     }
 }
 
-void quickSort(std::vector<int> &A) {
-    quickSort(A, 0, A.size());
+void quickSort(std::vector<int> &A) 
+{
+    const int N = A.size()-1;
+    quickSort(A, 0, N);
 }
