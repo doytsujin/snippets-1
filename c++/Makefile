@@ -27,7 +27,7 @@ OBJECT_FILES     = $(SRC_FILES:%.cpp=$(OBJ)/%.o)
 build: $(EXECUTABLE_FILES)
 
 clean:
-	rm -r -f $(BIN)
+	rm -rf $(BIN) $(OBJ)
 	@# ^^^ I don't recommend suppressing the echoing of the command using @
 
 # http://www.gnu.org/software/make/manual/make.html#Phony-Targets
