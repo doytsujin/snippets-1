@@ -26,7 +26,6 @@ OBJECT_FILES     = $(SRC_FILES:%.cpp=$(OBJ)/%.o)
 
 build: $(EXECUTABLE_FILES)
 
-.PHONY:	clean
 clean:
 	rm -rf $(BIN) $(OBJ)
 	@# ^^^ I don't recommend suppressing the echoing of the command using @
