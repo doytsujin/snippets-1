@@ -2,7 +2,6 @@
 #include <vector>
 
 #include "merge.h"
-#include "quicksort.h"
 
 void merge(std::vector<int> &A, int low, int mid, int high) 
 {
